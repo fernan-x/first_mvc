@@ -14,11 +14,11 @@ class HomeController {
 		$this->_server = new Server();
 	}
 
-	public function home($id = -1) {
+	public function home($id = 1) {
 		$detailAcc = $this->_account->getAccount($id);
 		$detailServ = $this->_server->getServer();
 		$view = new View("Home");
-		$view->generate(array('account' => $account, 'server' => $server));
+		$view->generate(array('account' => $detailAcc, 'server' => $detailServ));
 	}
 }
 

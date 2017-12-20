@@ -10,13 +10,13 @@ abstract class Model {
 			$res = $this->getDb()->prepare($query);
 			$res->execute($params);
 		}
-		return $res;
+		return $res->fetch();
 	}
 
 	private function getDb() {
-		if ($this->db == null)
-			$this->db = new PDO('mysql:host=localhost;dbname=flyffsite;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-		return $this->db;
+		if ($this->_db == null)
+			$this->_db = new PDO('mysql:host=localhost;dbname=flyffsite;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		return $this->_db;
 	}
 }
 
